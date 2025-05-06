@@ -42,7 +42,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 pipeline = Pipeline([
   ('vectorizer', CountVectorizer(ngram_range=(1, 2), min_df=1, max_df=0.85)),
-  ('classifier', LogisticRegression(C=10, solver='lbfgs', max_iter=500)),
+  ('classifier', LogisticRegression(C=10, solver='lbfgs', max_iter=1000)),
 ])
 
 # Run training
