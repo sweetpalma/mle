@@ -17,6 +17,7 @@ colorama=0.4.6=pyhd8ed1ab_1
 confection=0.1.5=pyhecae5ae_0
 cymem=2.0.11=py311h155a34a_0
 cython-blis=1.0.1=py311ha7f2236_0
+gensim=4.3.3=py311h0111b8e_0
 h2=4.2.0=pyhd8ed1ab_0
 hpack=4.1.0=pyhd8ed1ab_0
 hyperframe=6.1.0=pyhd8ed1ab_0
@@ -69,7 +70,6 @@ shellingham=1.5.4=pyhd8ed1ab_1
 six=1.17.0=pyhd8ed1ab_0
 smart-open=7.1.0=hd8ed1ab_0
 smart_open=7.1.0=pyhd8ed1ab_0
-spacy=3.8.5=py311h8fc16d6_0
 spacy-legacy=3.0.12=pyhd8ed1ab_0
 spacy-loggers=1.0.5=pyhd8ed1ab_0
 srsly=2.5.1=py311h155a34a_1

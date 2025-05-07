@@ -1,8 +1,14 @@
 # Sentiment Analysis
 # coding: utf-8
-import re
 
-# Download dataset from Kaggle
+# This example demonstrates how to use Linear Regression with CountVectorizer.
+# Achieved 90% accuracy using GridSearchCV (check `train_cross.py`).
+
+# Articles used:
+# https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c/
+# https://towardsdatascience.com/linear-regression-explained-1b36f97b7572/
+
+# Download sentiment dataset from Kaggle
 import kagglehub
 df = kagglehub.load_dataset(
   kagglehub.KaggleDatasetAdapter.PANDAS,
@@ -11,24 +17,22 @@ df = kagglehub.load_dataset(
   pandas_kwargs={'encoding': 'ISO-8859-1'},
 )
 
-# Pin the dataset column names
+# Prepare the cleaning function
+# It performs text lowering and common (stop) word removal.
+from gensim.parsing.preprocessing import remove_stopwords
+def clean(data):
+  return remove_stopwords(str(data).lower())
+
+# Assign column names
 df = df[df.columns[[2, 3]]]
 df.columns = ['sentiment', 'text']
 
-# Prepare stop words
-from spacy.lang.en import stop_words
-stop_words = {'.', ',', '!'}.union(stop_words.STOP_WORDS)
-def clean(data):
-  tokens = [x.lower() for x in re.split(r'\s', str(data))]
-  important_tokens = [x for x in tokens if not x in stop_words]
-  return ' '.join(important_tokens)
-
-# Clean the dataset
+# Clean data
 df['text'] = df['text'].map(clean)
 df['sentiment'] = df['sentiment'].str.lower()
 df = df.dropna()
 
-# Split the training and test datasets
+# Split data
 from sklearn.model_selection import train_test_split
 train, test = train_test_split(df, test_size=0.2)
 x_train = train['text']
@@ -36,19 +40,36 @@ y_train = train['sentiment']
 x_test = test['text']
 y_test = test['sentiment']
 
-# Prepare classification pipeline
-from sklearn.pipeline import Pipeline
+# Prepare count vectorizer
+# It builds a feature vocabulary first, and then uses it to turn a list of tokens into a 
+# vector representing their respective count.
+#
+# Important:
+# N-gram range is extremely important here - it allows the vectorizer to combine 
+# some terms for much better accuracy - e.g. "cool" and "not cool" *may* have completely
+# opposite meaning with this approach.
+#
+# Example: 
+# Input: 'this sucks. really sucks'
+# Output: { features: ['this', 'really', 'sucks', ...], result: [1, 2, 1, ...] }
 from sklearn.feature_extraction.text import CountVectorizer
+vectorizer = CountVectorizer(ngram_range=(1, 2), min_df=1, max_df=0.85)
+
+# Prepare logistic regression
 from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(C=10, solver='lbfgs', max_iter=1000)
+
+# Prepare pipeline
+from sklearn.pipeline import Pipeline
 pipeline = Pipeline([
-  ('vectorizer', CountVectorizer(ngram_range=(1, 2), min_df=1, max_df=0.85)),
-  ('classifier', LogisticRegression(C=10, solver='lbfgs', max_iter=1000)),
+  ('vectorizer', vectorizer),
+  ('classifier', classifier),
 ])
 
-# Run training
+# Train
 pipeline.fit(x_train, y_train)
 
-# Test classifier results
+# Test
 from sklearn.metrics import classification_report
 prediction = pipeline.predict(x_test)
-print(classification_report(y_test,prediction))
+print(classification_report(y_test, prediction))
