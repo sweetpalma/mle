@@ -1,5 +1,4 @@
 # Sentiment Analysis (Word2Vec)
-# coding: utf-8
 import numpy as np
 
 # This example demonstrates how to use Linear Regression with Word2Vec (Google News).
@@ -8,16 +7,16 @@ import numpy as np
 # Articles used:
 # https://medium.com/swlh/sentiment-classification-using-word-embeddings-word2vec-aedf28fbb8ca
 
-# Download sentiment dataset from Kaggle
+# Download sentiment dataset
 import kagglehub
-df = kagglehub.load_dataset(
+df = kagglehub.dataset_load(
   kagglehub.KaggleDatasetAdapter.PANDAS,
   'jp797498e/twitter-entity-sentiment-analysis',
   'twitter_training.csv',
   pandas_kwargs={'encoding': 'ISO-8859-1'},
 )
 
-# Download word2vec dataset from Kaggle
+# Download word2vec dataset
 import kagglehub
 path = kagglehub.dataset_download(
   'leadbest/googlenewsvectorsnegative300', 

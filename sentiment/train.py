@@ -1,5 +1,4 @@
 # Sentiment Analysis
-# coding: utf-8
 
 # This example demonstrates how to use Linear Regression with CountVectorizer.
 # Achieved 90% accuracy using GridSearchCV (check `train_cross.py`).
@@ -8,9 +7,9 @@
 # https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c/
 # https://towardsdatascience.com/linear-regression-explained-1b36f97b7572/
 
-# Download sentiment dataset from Kaggle
+# Download sentiment dataset
 import kagglehub
-df = kagglehub.load_dataset(
+df = kagglehub.dataset_load(
   kagglehub.KaggleDatasetAdapter.PANDAS,
   'jp797498e/twitter-entity-sentiment-analysis',
   'twitter_training.csv',

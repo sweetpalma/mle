@@ -1,5 +1,4 @@
 # Sentiment Analysis (Word2Vec + Multi-layered Perceptron)
-# coding: utf-8
 import pandas as pd
 import numpy as np
 
@@ -7,16 +6,16 @@ import numpy as np
 # Achieved 78% accuracy - better than a LinearClassifier with Word2Vec (56%), but still worse 
 # than a simple CountVectorizer (90%).
 
-# Download sentiment dataset from Kaggle
+# Download sentiment dataset
 import kagglehub
-df = kagglehub.load_dataset(
+df = kagglehub.dataset_load(
   kagglehub.KaggleDatasetAdapter.PANDAS,
   'jp797498e/twitter-entity-sentiment-analysis',
   'twitter_training.csv',
   pandas_kwargs={'encoding': 'ISO-8859-1'},
 )
 
-# Download word2vec dataset from Kaggle
+# Download word2vec dataset
 import kagglehub
 path = kagglehub.dataset_download(
   'leadbest/googlenewsvectorsnegative300', 
