@@ -52,16 +52,25 @@ y_test = test['sentiment']
 # Input: 'this sucks. really sucks'
 # Output: { features: ['this', 'really', 'sucks', ...], result: [1, 2, 1, ...] }
 from sklearn.feature_extraction.text import CountVectorizer
-vectorizer = CountVectorizer(ngram_range=(1, 2), min_df=1, max_df=0.85)
+vectorizer = CountVectorizer(ngram_range=(1, 2), min_df=1, max_df=0.95)
 
 # Prepare logistic regression
 from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression(C=10, solver='lbfgs', max_iter=1000)
+classifier = LogisticRegression(C=0.1, solver='lbfgs', max_iter=500)
+
+# Prepare scaler
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler(with_mean=False)
+
+# Scaler was added because LBFGS may struggle with input features with vastly different 
+# scales. It happens because features with larger values (like WordCount results) can 
+# dominate the gradient updates, making the optimization path unstable or very slow.
 
 # Prepare pipeline
 from sklearn.pipeline import Pipeline
 pipeline = Pipeline([
   ('vectorizer', vectorizer),
+  ('scaler', scaler),
   ('classifier', classifier),
 ])
 
