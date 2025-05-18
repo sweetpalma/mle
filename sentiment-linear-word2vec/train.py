@@ -1,4 +1,4 @@
-# Sentiment Analysis (Word2Vec)
+# Sentiment Analysis (Linear Regression + Word2Vec)
 import numpy as np
 
 # This example demonstrates how to use Linear Regression with Word2Vec (Google News).

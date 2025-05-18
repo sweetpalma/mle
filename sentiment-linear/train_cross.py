@@ -1,4 +1,4 @@
-# Sentiment Analysis
+# Sentiment Analysis (Linear Regression)
 
 # This example shows a simple CountVectorizer with n-grams and Linear Regression.
 # Achieved 92% accuracy using RandomizedSearchCV.

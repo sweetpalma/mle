@@ -1,4 +1,4 @@
-# Sentiment Analysis
+# Sentiment Analysis (Linear Regression)
 
 # This example demonstrates how to use Linear Regression with CountVectorizer.
 # Achieved 92% accuracy using RandomizedSearchCV (check `train_cross.py`).
