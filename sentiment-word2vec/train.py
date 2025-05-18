@@ -2,7 +2,7 @@
 import numpy as np
 
 # This example demonstrates how to use Linear Regression with Word2Vec (Google News).
-# Achieved 56% accuracy - highlights limitations of simple averaging for this task and dataset.
+# Achieved 64% accuracy - highlights limitations of simple averaging for this task and dataset.
 
 # Articles used:
 # https://medium.com/swlh/sentiment-classification-using-word-embeddings-word2vec-aedf28fbb8ca
@@ -31,7 +31,7 @@ wv = KeyedVectors.load_word2vec_format(path, binary=True)
 from gensim.parsing.preprocessing import remove_stopwords
 from gensim.utils import simple_preprocess
 def vectorize(data):
-  text_without_stopwords = remove_stopwords(str(data).lower())
+  text_without_stopwords = remove_stopwords(data.lower())
   tokens = simple_preprocess(text_without_stopwords, deacc=True)
   token_vectors = [wv.get_vector(x) for x in tokens if x in wv]
   if token_vectors:
@@ -39,9 +39,17 @@ def vectorize(data):
   else:
     return np.zeros(wv.vector_size)
 
-# Pin the dataset column names
+# Pin column names
 df = df[df.columns[[2, 3]]]
 df.columns = ['sentiment', 'text']
+
+# Pin column data types
+df['text'] = df['text'].astype(str)
+df['sentiment'] = df['sentiment'].astype(str)
+df = df.dropna()
+
+# Clean data
+df = df.loc[df['sentiment'] != 'Irrelevant']
 
 # Split data
 # It is done before vectorization to prevent vocabulary contamination and overfitting
@@ -54,9 +62,7 @@ y_test = test['sentiment']
 
 # Vectorize data
 x_train = np.array(train['text'].map(vectorize).tolist())
-y_train = train['sentiment'].str.lower()
 x_test = np.array(test['text'].map(vectorize).tolist())
-y_test = test['sentiment'].str.lower()
 
 # Prepare classifier
 from sklearn.pipeline import Pipeline

@@ -1,7 +1,7 @@
 # Sentiment Analysis
 
 # This example demonstrates how to use Linear Regression with CountVectorizer.
-# Achieved 90% accuracy using GridSearchCV (check `train_cross.py`).
+# Achieved 92% accuracy using RandomizedSearchCV (check `train_cross.py`).
 
 # Articles used:
 # https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c/
@@ -19,17 +19,21 @@ df = kagglehub.dataset_load(
 # Prepare the cleaning function
 # It performs text lowering and common (stop) word removal.
 from gensim.parsing.preprocessing import remove_stopwords
-def clean(data):
-  return remove_stopwords(str(data).lower())
+def clean(text):
+  return remove_stopwords(text.lower())
 
-# Assign column names
+# Pin column names
 df = df[df.columns[[2, 3]]]
 df.columns = ['sentiment', 'text']
 
-# Clean data
-df['text'] = df['text'].map(clean)
-df['sentiment'] = df['sentiment'].str.lower()
+# Pin column data types
+df['text'] = df['text'].astype(str)
+df['sentiment'] = df['sentiment'].astype(str)
 df = df.dropna()
+
+# Clean data
+df = df.loc[df['sentiment'] != 'Irrelevant']
+df['text'] = df['text'].map(clean)
 
 # Split data
 from sklearn.model_selection import train_test_split
@@ -50,7 +54,7 @@ y_test = test['sentiment']
 #
 # Example: 
 # Input: 'this sucks. really sucks'
-# Output: { features: ['this', 'really', 'sucks', ...], result: [1, 2, 1, ...] }
+# Output: { features: ['this', 'sucks', 'really', ...], result: [1, 2, 1, ...] }
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer(ngram_range=(1, 2), min_df=1, max_df=0.95)
 
