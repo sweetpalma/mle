@@ -6,6 +6,9 @@ import numpy as np
 # Achieved 85% accuracy - better than a LinearClassifier with Word2Vec (64%), but still worse 
 # than a simple CountVectorizer (92%).
 
+# Articles used:
+# https://developer.apple.com/metal/tensorflow-plugin/
+
 # Download sentiment dataset
 import kagglehub
 df = kagglehub.dataset_load(
