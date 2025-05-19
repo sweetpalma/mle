@@ -23,15 +23,15 @@ path = kagglehub.dataset_download(
   path='GoogleNews-vectors-negative300.bin.gz'
 )
 
-# Prepare Word2Vec model
+# Prepare word2vec model
 from gensim.models import KeyedVectors
 wv = KeyedVectors.load_word2vec_format(path, binary=True)
 
 # Prepare vectorizer
 from gensim.parsing.preprocessing import remove_stopwords
 from gensim.utils import simple_preprocess
-def vectorize(data):
-  text_without_stopwords = remove_stopwords(data.lower())
+def vectorize(text):
+  text_without_stopwords = remove_stopwords(text.lower())
   tokens = simple_preprocess(text_without_stopwords, deacc=True)
   token_vectors = [wv.get_vector(x) for x in tokens if x in wv]
   if token_vectors:
