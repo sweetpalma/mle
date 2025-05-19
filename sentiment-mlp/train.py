@@ -22,15 +22,15 @@ path = kagglehub.dataset_download(
   path='GoogleNews-vectors-negative300.bin.gz'
 )
 
-# Prepare Word2Vec model
+# Prepare word2vec model
 from gensim.models import KeyedVectors
 wv = KeyedVectors.load_word2vec_format(path, binary=True)
 
 # Prepare vectorizer
 from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import remove_stopwords
-def vectorize(data):
-  text_without_stopwords = remove_stopwords(data.lower())
+def vectorize(text):
+  text_without_stopwords = remove_stopwords(text.lower())
   tokens = simple_preprocess(text_without_stopwords, deacc=True)
   token_vectors = [wv.get_vector(x) for x in tokens if x in wv]
   if token_vectors:
@@ -80,12 +80,12 @@ y_train_encoded = pd.DataFrame(encoder.fit_transform(y_train))
 y_test_encoded = pd.DataFrame(encoder.transform(y_test))
 
 # Prepare model
-# Layer 1: Input layer with shape matching Word2Vec size
+# Layer 1: Input layer with shape matching word2vec size
 # Layer 2, 4: Hidden layers with 128 neurons, non-linear (ReLU) activation
 # Layer 3, 5: Dropout layers to reduce potential overfitting
 # Layer 5: Output layer with softmax for multi-class probability (sum of neurons is 1.0)
 from tensorflow.keras import layers, Sequential
-num_classes = 3 # Number of possible sentiments
+num_classes = len(encoder.classes_)
 model = Sequential([
   layers.Input(shape=(300,)),
   layers.Dense(128, activation='relu'),
@@ -100,7 +100,6 @@ model = Sequential([
 # to increased model capacity, and (theoretically) hierarchical feature learning.
 
 # Compile
-# Uses Adam optimizer 
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Train

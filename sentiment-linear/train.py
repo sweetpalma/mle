@@ -49,8 +49,8 @@ y_test = test['sentiment']
 #
 # Important:
 # N-gram range is extremely important here - it allows the vectorizer to combine 
-# some terms for much better accuracy - e.g. "cool" and "not cool" *may* have completely
-# opposite meaning with this approach.
+# some terms for much better accuracy - for example, model *may* grasp the difference
+# between "cool" and "not cool" with this approach.
 #
 # Example: 
 # Input: 'this sucks. really sucks'
