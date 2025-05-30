@@ -1,0 +1,24 @@
+version: 1
+project:
+  authors:
+    - name: Paul Marlow
+      github: sweetpalma/ml
+  toc:
+    - file: INTRO.md
+    - title: Sentiment Analysis
+      children:
+        - file: sentiment/01-logistic-regression.ipynb
+        - file: sentiment/02-logistic-regression-word2vec.ipynb
+        - file: sentiment/03-mlp.ipynb
+        - file: sentiment/04-lstm.ipynb
+site:
+  template: book-theme
+  options:
+    style: ./myst.css
+    logo: ./assets/logo.png
+    logo_dark: ./assets/logo-dark.png
+    logo_text: Machine Learning Experiments
+    hide_search: true
+  actions:
+    - title: GitHub
+      url: https://github.com/sweetpalma/ml

@@ -198,12 +198,14 @@ dependencies:
       - google-pasta==0.2.0
       - grpcio==1.71.0
       - h5py==3.13.0
+      - jupyter-book==2.0.0a3
       - kagglehub==0.3.12
       - keras==3.9.2
       - libclang==18.1.1
       - markdown==3.8
       - ml-dtypes==0.5.1
       - namex==0.0.9
+      - nodeenv==1.9.1
       - opt-einsum==3.4.0
       - optree==0.15.0
       - protobuf==5.29.4
