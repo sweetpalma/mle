@@ -6,6 +6,12 @@ body > .backdrop-blur {
    height: 64px;
 }
 
+@media (max-width: 640px) {
+   body > .backdrop-blur nav span {
+      display: none;
+   }
+}
+
 /*.dark body {
    background-color: #0e1116!important;
 }*/
