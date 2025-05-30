@@ -11,9 +11,10 @@ Feel free to use it for whatever you want.
 ## Installation
 
 - Clone this repository and navigate to it within your shell.
-- Setup a Conda environment: `conda env create -f environment.yml`
+- Setup a Conda environment: `conda env create --yes -f environment.yml`
 - Activate it: `conda activate ml`
 - Start Jupyter Lab: `jupyter lab`
+- Start Jupyter Book: `jupyter book start`
 
 <!-- 
   Update requirements: 

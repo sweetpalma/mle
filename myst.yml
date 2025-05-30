@@ -1,0 +1,20 @@
+version: 1
+project:
+  authors:
+    - name: Paul Marlow
+      github: sweetpalma/ml
+  toc:
+    - title: SHIT
+      file: README.md
+    - title: Sentiment Analysis
+      children:
+        - file: sentiment/01-logistic-regression.ipynb
+        - file: sentiment/02-logistic-regression-word2vec.ipynb
+        - file: sentiment/03-mlp.ipynb
+        - file: sentiment/04-lstm.ipynb
+site:
+  template: book-theme
+  options:
+    style: ./myst.css
+    logo_text: Machine Learning Experiments
+    hide_search: true
