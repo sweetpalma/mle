@@ -1,8 +1,11 @@
 version: 1
 project:
+  title: Machine Learning Experiments
+  license: MIT
+  description: Follow a hands-on journey into machine learning. Features practical Python examples, Jupyter Notebooks, and insights into the iterative learning process.
   authors:
     - name: Paul Marlow
-      github: sweetpalma/ml
+      github: sweetpalma
   toc:
     - file: INTRO.md
     - title: Sentiment Analysis
