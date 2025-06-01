@@ -17,6 +17,7 @@ project:
     - title: Image Classification
       children:
         - file: image-classification/01-cnn.ipynb
+        - file: image-classification/02-cnn-tuned.ipynb
 site:
   template: book-theme
   options:
