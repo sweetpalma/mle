@@ -12,6 +12,10 @@ body > .backdrop-blur {
    }
 }
 
+table {
+   margin-right: 100%!important;
+}
+
 /*.dark body {
    background-color: #0e1116!important;
 }*/
