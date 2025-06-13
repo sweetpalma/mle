@@ -8,13 +8,12 @@ This is very much a work in progress. The path is ongoing, new topics will be ex
 
 ## Running locally
 
-### Preparations
+<!-- ### Preparations -->
+<!-- Install a [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/main) manager on your PC. -->
+<!-- - Prepare a [Kaggle API](https://www.kaggle.com/settings) token and place it here: `~/.kaggle/kaggle.json` -->
+<!-- ### Installation -->
 
 - Install a [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/main) manager on your PC.
-- Prepare a [Kaggle API](https://www.kaggle.com/settings) token and place it here: `~/.kaggle/kaggle.json`
-
-### Installation
-
 - Clone this repository and navigate to it within your shell.
 - Setup a Conda environment: `conda env create --yes -f environment.yml`
 - Activate it: `conda activate ml`
