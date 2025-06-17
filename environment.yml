@@ -4,6 +4,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - absl-py=2.3.0=pyhd8ed1ab_0
   - accessible-pygments=0.0.5=pyhd8ed1ab_1
   - aiohappyeyeballs=2.6.1=pyhd8ed1ab_0
   - aiohttp=3.12.13=py312h998013c_0
@@ -78,6 +79,8 @@ dependencies:
   - greenlet=3.2.3=py312hd8f9ff3_0
   - h11=0.16.0=pyhd8ed1ab_0
   - h2=4.2.0=pyhd8ed1ab_0
+  - h5py=3.14.0=nompi_py312h35183de_100
+  - hdf5=1.14.6=nompi_ha698983_101
   - hpack=4.1.0=pyhd8ed1ab_0
   - httpcore=1.0.9=pyh29332c3_0
   - httpx=0.28.1=pyhd8ed1ab_0
@@ -100,7 +103,6 @@ dependencies:
   - jsonschema=4.24.0=pyhd8ed1ab_0
   - jsonschema-specifications=2025.4.1=pyh29332c3_0
   - jsonschema-with-format-nongpl=4.24.0=hd8ed1ab_0
-  - jupyter-book=1.0.4.post1=pyh29332c3_0
   - jupyter-cache=1.0.1=pyhff2d567_0
   - jupyter-lsp=2.2.5=pyhe01879c_2
   - jupyter_client=8.6.3=pyhd8ed1ab_1
@@ -112,12 +114,15 @@ dependencies:
   - jupyterlab_pygments=0.3.0=pyhd8ed1ab_2
   - jupyterlab_server=2.27.3=pyhd8ed1ab_1
   - jupyterlab_widgets=3.0.15=pyhd8ed1ab_0
+  - keras=3.10.0=pyh753f3f9_0
+  - keras-preprocessing=1.1.2=pyhd8ed1ab_1
   - kiwisolver=1.4.8=py312h2c4a281_0
   - krb5=1.21.3=h237132a_0
   - latexcodec=2.0.1=pyh9f0ad1d_0
   - lcms2=2.17=h7eeda09_0
   - lerc=4.0.0=hd64df32_1
   - libabseil=20250127.1=cxx17_h07bc746_0
+  - libaec=1.1.4=h51d1e36_0
   - libarrow=20.0.0=h76b72fb_7_cpu
   - libarrow-acero=20.0.0=hf07054f_7_cpu
   - libarrow-dataset=20.0.0=hf07054f_7_cpu
@@ -176,6 +181,7 @@ dependencies:
   - mdit-py-plugins=0.4.2=pyhd8ed1ab_1
   - mdurl=0.1.2=pyhd8ed1ab_1
   - mistune=3.1.3=pyh29332c3_0
+  - ml_dtypes=0.5.1=py312hcb1e3ce_0
   - mpc=1.3.1=h8f1351a_1
   - mpfr=4.2.1=hb693164_3
   - mpmath=1.3.0=pyhd8ed1ab_1
@@ -184,6 +190,7 @@ dependencies:
   - munkres=1.1.4=pyhd8ed1ab_1
   - myst-nb=1.2.0=pyh29332c3_0
   - myst-parser=3.0.1=pyhd8ed1ab_0
+  - namex=0.1.0=pyhd8ed1ab_0
   - nbclient=0.10.2=pyhd8ed1ab_0
   - nbconvert-core=7.16.6=pyh29332c3_0
   - nbformat=5.10.4=pyhd8ed1ab_1
@@ -195,6 +202,7 @@ dependencies:
   - numpy=1.26.4=py312h8442bc7_0
   - openjpeg=2.5.3=h8a3d83b_0
   - openssl=3.5.0=h81ee809_1
+  - optree=0.16.0=py312hb23fbb9_0
   - orc=2.1.2=hd90e43c_0
   - overrides=7.7.0=pyhd8ed1ab_1
   - packaging=25.0=pyh29332c3_1
@@ -244,9 +252,10 @@ dependencies:
   - requests=2.32.4=pyhd8ed1ab_0
   - rfc3339-validator=0.1.4=pyhd8ed1ab_1
   - rfc3986-validator=0.1.1=pyh9f0ad1d_0
+  - rich=14.0.0=pyh29332c3_0
   - rpds-py=0.25.1=py312hd3c0895_0
   - scikit-learn=1.6.1=py312h313beb8_0
-  - scipy=1.15.2=py312h99a188d_0
+  - scipy=1.12.0=py312h9d7df2b_2
   - send2trash=1.8.3=pyh31c8845_1
   - setuptools=80.9.0=pyhff2d567_0
   - six=1.17.0=pyhd8ed1ab_0
@@ -310,3 +319,9 @@ dependencies:
   - zlib=1.3.1=h8359307_2
   - zstandard=0.23.0=py312hea69d52_2
   - zstd=1.5.7=h6491c7d_2
+  - pip:
+      - jupyter-book==2.0.0a3
+      - nodeenv==1.9.1
+variables:
+  KERAS_BACKEND: torch
+  PYTORCH_ENABLE_MPS_FALLBACK: '1'
