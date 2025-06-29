@@ -14,6 +14,7 @@ project:
         - file: sentiment/02-logistic-regression-word2vec.ipynb
         - file: sentiment/03-mlp.ipynb
         - file: sentiment/04-lstm.ipynb
+        - file: sentiment/05-roberta.ipynb
     - title: Image Classification
       children:
         - file: image-classification/01-cnn.ipynb
