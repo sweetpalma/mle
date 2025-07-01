@@ -20,6 +20,7 @@ project:
         - file: image-classification/01-cnn.ipynb
         - file: image-classification/02-cnn-tuned.ipynb
         - file: image-classification/03-efficientnet.ipynb
+        - file: image-classification/04-vit.ipynb
 site:
   template: book-theme
   options:
